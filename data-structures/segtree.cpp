@@ -1,18 +1,18 @@
 #include <bits/stdc++.h>
 
 const int MAX = 1e5;
-// time complexity: O(log n)
+// time complexity: O(nlog n)
 //for each node i, we have a node built on a heap structure, so left son is 2*i and right son is 2*i+1
 //for each node [i, j] --> left son is [i, (i+j)/2] and right son is [(i+j)/2 +1 , j]
 //in this example i'll use seg tree to find the minimum value in a given range [a, b], so each node has the min value in [i, j]
 int st[4*MAX], values[MAX];
 
 void build(int node, int i, int j){ // build seg tree at initial state
-  if(i == j){ // se estamos num nó folha
-    st[node] = i; // algum valor de acordo com o problema
+  if(i == j){ // if node is a leaf
+    st[node] = values[i]; // some value, depending on the problem youre solving
     return;
   }
-  else{ // caso contrário
+  else{ // otherwise
     int l = 2*node;
     int r = 2*node + 1;
     int m = (i+j)/2;
@@ -60,6 +60,6 @@ int query(int node, int i, int j, int a, int b){
   if(rans == -1) return lans;
   if(lans == -1) return rans;
 
-  if(values[lans]< values[rans]) return value[lans];
-  else return values[rans];
+  if(lans < rans) return lans;
+  else return rans;
 }
