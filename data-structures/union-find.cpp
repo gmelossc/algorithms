@@ -27,7 +27,6 @@ void join(int x, int y){ // optimization of join function above based on weight 
   if(x==y) return;
 
   if(weight[x] < weight[y]) parent[x] = y; // if one of parents have less weight(the most distant descendent is "minimized")
-
   else if(weight[x] > weight[y]) parent[y] = x;
   else{
     parent[x] = y;
