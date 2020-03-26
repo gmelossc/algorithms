@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-
+//time complexity: O
 const int MAX = 1e5;
 
 int parent[MAX], weight[MAX];
@@ -9,9 +9,7 @@ void initSet(int n){
 }
 
 int find(int x){ // find a parent of a node
-  if(parent[x] == x) return x; //if a node is its own parent, so we return the node value
-  // else return find(parent[x]); // else we need to find its "parents"
-  else return parent[x] = find(parent[x]); // optimization of else above
+  return parent[x] = (x==parent[x]? x : find(parent[x])); // optimization of else above
 }
 
 /*
