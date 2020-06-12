@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int MAX = 1e6 + 1;
+const int MAX = 1e6 + 1;
 
 int bit[MAX], n;
 

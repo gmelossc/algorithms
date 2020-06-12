@@ -4,7 +4,7 @@ using namespace std;
 
 const int MAX = 1e6+1;
 
-int bit[MAXN][MAXN], n;
+int bit[MAX][MAX], n;
 
 int sum(int x, int y){
 	int s = 0;
