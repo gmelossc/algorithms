@@ -2,7 +2,7 @@
 
 using namespace std;
 
-const int MAX = 1e2 + 1;
+const int MAX = 1e3 + 1;
 const int INF = 0x3f3f3f3f;
 
 typedef vector<int> vi;
