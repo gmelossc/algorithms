@@ -39,8 +39,7 @@ void update(int node, int i, int j, int pos, int new_value){ // updates a new_va
     else update(r, m+1, j, pos, new_value);// else we go to a right node
 
     //do some trivial alteration on st[node] depending on the problem needs
-    if(values[st[r]] < values[st[l]]) st[node] = st[r];
-    else st[node] = st[l];
+    st[node] = max(st[r], st[l]);
   }
 }
 
