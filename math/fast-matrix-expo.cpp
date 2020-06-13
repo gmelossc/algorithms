@@ -5,6 +5,7 @@ using namespace std;
 typedef vector<int> vi;
 typedef vector<vi> matrix;
 typedef long long ll;
+int mod(int x, int m){ if(x >= 0) return x % m; if(-x < m) return m-(-x); return mod(x%m, m);}
 
 matrix prod(matrix a, matrix b, int m){
     matrix c(a.size(), vector<int>(b[0].size()));
@@ -12,7 +13,7 @@ matrix prod(matrix a, matrix b, int m){
 	for(int i=0; i< a.size(); i++)
 		for(int j=0; j< b[0].size(); j++)
 			for(int k=0; k< b.size(); k++)
-						c[i][j] = mod(mod(c[i][j], m) + mod(a[i][k]*b[k][j], m), m);
+					c[i][j] = mod(mod(c[i][j], m) + mod(a[i][k]*b[k][j], m), m);
 
     return c;
 }
