@@ -7,7 +7,7 @@ typedef vector<vi> matrix;
 typedef long long ll;
 int mod(int x, int m){ if(x >= 0) return x % m; if(-x < m) return m-(-x); return mod(x%m, m);}
 
-matrix prod(matrix a, matrix b, int m){
+matrix mult(matrix a, matrix b, int m){
     matrix c(a.size(), vector<int>(b[0].size()));
 
 	for(int i=0; i< a.size(); i++)
