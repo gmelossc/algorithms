@@ -38,7 +38,7 @@ void precompute(){
 			if(parent[j][i-1] != -1) parent[j][i] = parent[parent[j][i-1]][i-1];
 }
 
-// remember that the distance of lca(u, v) is depth[u] + depth[v] - 2*depth[lca(u, v)]
+// remember that the distance between u and v is depth[u] + depth[v] - 2*depth[lca(u, v)]
 
 int lca(int u, int v){
 	if(depth[u] < depth[v]) swap(u, v);
