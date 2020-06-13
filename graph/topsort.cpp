@@ -19,11 +19,11 @@ void readGraph(){
 	}
 }
 
-void toposort(){
+vi toposort(){
 	vi list;
 
 	readGraph();
-	
+
 	for(int i = 1; i<=n; ++i)
 		if(grau[i] == 0) list.push_back(i);
 
@@ -39,9 +39,10 @@ void toposort(){
 		}
 	}
 
-	if(list.size() < n) cout<< "Impossible\n";
-	else{
-		for(int i: list) cout<< i << ' ';
-		cout << '\n';
-	}
+	// if(list.size() < n) cout<< "Impossible\n";
+	// else{
+	// 	for(int i: list) cout<< i << ' ';
+	// 	cout << '\n';
+	// }
+	return list;
 }
