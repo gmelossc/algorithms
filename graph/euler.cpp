@@ -4,22 +4,29 @@ using namespace std;
 
 const int MAX = 1e6;
 
+typedef vector<int> vi;
 typedef pair<int, int> pii;
 
-bool mark[MAX];
+bool visited[MAX];
 
 vector<pii> adj[MAX];
 
-vector<int> path;
+vi dfs(int start){
+	vi path;
+	stack<int> s;
+	s.push(start);
 
-void dfs(int u){
-	for (auto v: adj[u]){
-		if (!mark[v.second])
-		{
-			mark[v.second] = 1;
-			dfs(v.first);
+	while(!s.empty()){
+		int u = s.top();
+		s.pop();
+
+		for(pii v: adj[u]){
+			if(!visited[v.second]){
+				visited[v.second] = 1;
+				s.push(v.first);
+			}
 		}
+		path.push_back(u);
 	}
-
-	path.push_back(u);
+	return path;
 }
