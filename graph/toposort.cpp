@@ -7,7 +7,7 @@ typedef vector<int> vi;
 
 vi adj[MAX];
 int grau[MAX];
-int n; //number of nodes and edges
+int n, m; //number of nodes and edges
 
 void readGraph(){
 	for(int i = 1; i <= m; ++i){
