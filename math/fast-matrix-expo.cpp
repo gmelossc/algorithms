@@ -23,10 +23,10 @@ matrix fexp(matrix base, ll exp, int m){
 
 	while(exp > 0){
 		if(exp & 1){
-			total = mult(total, base);
+			total = mult(total, base, m);
 			exp--;
 		}
-		base= mult(base, base);
+		base= mult(base, base, m);
 		exp /= 2;
 	}
 	return total;
