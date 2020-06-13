@@ -15,6 +15,7 @@ void prepros(){
 	}
 
 	// vi prime;
-	// for(int i = 2; i<=MAX; ++i) prime.push_back(i);
+	// for(int i = 2; i<=MAX; ++i)
+		// if(sieve[i]) prime.push_back(i);
 	// return prime;
 }
