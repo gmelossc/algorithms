@@ -12,7 +12,7 @@ void bfs(int start){
 	q.push(start);
 
 	while(!q.empty()){
-		int u = q.top();
+		int u = q.back();
 		cout<< u << ' ';
 		q.pop();
 		visited[u] = true;
