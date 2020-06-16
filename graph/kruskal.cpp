@@ -3,7 +3,7 @@
 const int MAX = 1e6;
 typedef vector<int> vi;
 
-int parent[MAX], weight[MAX];
+int parent[MAX], weight[MAX], sz[MAX];
 
 struct edge{
 	int x, int y, int d;
@@ -14,7 +14,11 @@ bool compare(edge a, edge b){
 }
 
 void initSet(int n){
-  for(int i = 1; i<=n; ++i) parent[i] = i;
+  for(int i = 1; i<=n; ++i) {
+	  parent[i] = i;
+	  sz[i] = 1;
+	  w[i] = 0;
+  }
 }
 
 int find(int x){
@@ -28,12 +32,11 @@ void join(int x, int y){
 
   if(x==y) return;
 
-  if(weight[x] < weight[y]) parent[x] = y;
-  else if(weight[x] > weight[y]) parent[y] = x;
-  else{
-    parent[x] = y;
-    weight[y]++;
-  }
+  if(weight[x] < weight[y]) swap(x, y);
+
+  parent[x] = y;
+  sz[y] += sz[x];
+  if(weight[x] == weight[y]) weight[y]++;
 }
 
 int getMST(int m){
