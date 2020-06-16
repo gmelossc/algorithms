@@ -9,13 +9,13 @@ int color[MAX], n;
 vi adj[MAX];
 
 void coloring(int i){
-	color[i] = 0; 
+	color[i] = 0;
 
 	queue<int> q;
 	q.push(i);
 
 	while(!q.empty()){
-		int u = q.back();
+		int u = q.front();
 		q.pop();
 
 		for(int v: adj[u]){
