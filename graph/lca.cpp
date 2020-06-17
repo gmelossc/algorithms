@@ -43,12 +43,9 @@ void precompute(){
 int lca(int u, int v){
 	if(depth[u] < depth[v]) swap(u, v);
 
-	// int diff = depth[u] - depth[v];
-	// for(int i = 0; i< LOG; ++i) if((diff >> i) & 1) u = parent[u][i];
-
-	for(int i = LOG-1; i >= 0; i--)
-		if(depth[u] - (1<<i) >= depth[v])
-			u = parent[u][i];
+	int diff = depth[u] - depth[v];
+	for(int i = 0; i< LOG; ++i)
+		if((1 << i) & diff) u = parent[u][i];
 
 	if(u == v) return u;
 
