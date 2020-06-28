@@ -14,3 +14,30 @@ int bsearch(int l, int r, int x, vector<int> &v){
 	}
 	return -1;
 }
+
+/*
+ * - In Lower/Upper Bound, search is in the interval [l, r)
+ * - Input vector should be sorted
+ */
+
+// return first position P where v[P] >= x
+int lbound(int l, int r, int x, vector<int> &v) {
+	int mid;
+	while(l < r) {
+		mid = (l+r)/2;
+		if(x <= v[mid]) r = mid;
+		else l = mid+1;		
+	}
+	return r;	
+}
+
+// return first position P where v[p] > x
+int ubound(int l, int r, int x, vector<int> &v) {
+	int mid;
+	while(l < r) {
+		mid = (l+r)/2;
+		if(x < v[mid]) r = mid;
+		else l = mid+1;
+	}
+	return r;
+}
