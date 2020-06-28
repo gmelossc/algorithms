@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
-//time complexity: O
+//time complexity: O(m log m)
 const int MAX = 1e5;
 
-int parent[MAX], weight[MAX];
+int parent[MAX], weight[MAX], sz[MAX];
 
 void initSet(int n){
   for(int i = 1; i<=n; ++i) parent[i] = i;
@@ -26,10 +26,9 @@ void join(int x, int y){ // optimization of join function above based on weight 
 
   if(x==y) return;
 
-  if(weight[x] < weight[y]) parent[x] = y; // if one of parents have less weight(the most distant descendent is "minimized")
-  else if(weight[x] > weight[y]) parent[y] = x;
-  else{
-    parent[x] = y;
-    weight[y]++;
-  }
+  if(weight[x] > weight[y]) swap(x, y); // if one of parents have less weight(the most distant descendent is "minimized")
+
+  parent[x] = y;
+  sz[y] += sz[x];
+  if(weight[x] == weight[y]) weight[y]++;
 }
