@@ -8,8 +8,8 @@ ll mod(ll x, ll m){ if(x >= 0LL) return x % m; if(-x < m) return m-(-x); return 
 
 ll fexp(int base, ll exp, ll m){
 	ll total = 1;
-	for(;exp ; exp>>=1){
-		if(exp & 1)
+	for(;exp ; exp>>=1LL){
+		if(exp & 1LL)
 			total = mod(((mod(total, m)) * (mod(base, m))), m);
 		base= mod((mod(base, m) * mod(base, m)), m);
 	}
