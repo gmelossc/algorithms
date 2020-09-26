@@ -3,7 +3,7 @@
 const int MAX = 1e6;
 
 int bsearch(int l, int r, int x, vector<int> &v){
-	sort(v.begin(), v.end());
+	// sort(v.begin(), v.end());
 
 	while(l <= r){
 		int m = (l+r)/2;
@@ -26,9 +26,9 @@ int lbound(int l, int r, int x, vector<int> &v) {
 	while(l < r) {
 		mid = (l+r)/2;
 		if(x <= v[mid]) r = mid;
-		else l = mid+1;		
+		else l = mid+1;
 	}
-	return r;	
+	return r;
 }
 
 // return first position P where v[p] > x
