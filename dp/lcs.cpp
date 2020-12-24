@@ -1,15 +1,15 @@
 #include <bits/stdc++.h>
+using namespace std;
 
-const int MAX = 1e5 + 1;
+const int MAX = 1e3 + 1;
 
 int dp[MAX][MAX], rec[MAX][MAX];
 
 void lcs(string &s, string &t){
     int n = s.size();
     int m = t.size();
- 
     memset(dp, -0x3f, sizeof(dp));
-
+    
     dp[0][0] = 0;
 
     for(int i = 0; i<=n; ++i){
@@ -50,3 +50,14 @@ string rcv(string &s, string &t){
     }
     return ans;
 }
+
+int32_t main(){
+    string s, t;
+    cin >> s;
+    cin >> t;
+
+    lcs(s, t);
+    cout << rcv(s, t) << endl;
+    return 0;
+}
+
