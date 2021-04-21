@@ -82,7 +82,7 @@ int main(int argc, char const *argv[])
 	b.update(8, 1);
 	b.update(10, 1);
 
-	cout << b.query(7) << " " << b.lower_bound(5) << " " << b.upper_bound(1);
+	cout << b.query(7) << " " << b.lower_bound(6) << " " << b.upper_bound(1);
 
 	return 0;
 }
