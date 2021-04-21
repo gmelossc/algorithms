@@ -53,7 +53,7 @@ struct BIT {
 				ans += (1 << LOG_N);
 			}
 		}
-		return ans;
+		return ans+1;
 	}
 
 	int lower_bound(int value) {
@@ -77,11 +77,12 @@ int main(int argc, char const *argv[])
 
 	b.update(3, 1);
 	b.update(1, 1);
+	b.update(2, 1);
 	b.update(5, 1);
 	b.update(8, 1);
 	b.update(10, 1);
 
-	cout << b.query(7) << " " << b.lower_bound(3) << " " << b.upper_bound(4);
+	cout << b.query(7) << " " << b.lower_bound(5) << " " << b.upper_bound(1);
 
 	return 0;
 }
