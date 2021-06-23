@@ -39,4 +39,4 @@ struct Sieve {
         }
     }
 };
-const Sieve sieve(1'000'000);
+const Sieve sieve(1'000'100);
