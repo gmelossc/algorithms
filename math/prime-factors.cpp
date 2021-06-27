@@ -46,13 +46,13 @@ struct Sieve {
         }
     }
 };
-const Sieve sieve(100'000);
+const Sieve sieve(1'000'100);
 
 
 int cnt_factors(long long n) {
     int cnt = 0;
     for(int p : sieve.primes) {
-        if(p*p > n) break;
+        if(1ll*p*p > n) break;
         while(n % p == 0) {
             cnt++;
             n /= p;
@@ -60,4 +60,19 @@ int cnt_factors(long long n) {
     }
     if(n > 1) cnt++;
     return cnt;
+}
+
+vector<int> get_factors(long long n) {
+    vector<int> f;
+    for(int p : sieve.primes) {
+        if(1ll*p*p > n) break;
+        while(n % p == 0) {
+            f.push_back(p);
+            n /= p;
+        }
+    }
+    if(n > 1) {
+        f.push_back(n);
+    }
+    return f;
 }
