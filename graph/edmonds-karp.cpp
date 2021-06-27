@@ -14,6 +14,7 @@ struct EdmondsKarp {
 
     void addEdge(int from, int to, int cap) {
         adj[from].push_back(to);
+        adj[to].push_back(from);
         capacity[from][to] += cap;
     }
 
