@@ -65,16 +65,16 @@ int query(int node, int i, int j, int a, int b){
 }
 
 
-struct SEG_TREE {
+struct SegTree {
     int N;
     vector<int> seg;
 
-    SEG_TREE(int n) {
+    SegTree(int n) {
         N = n<<2;
         seg.assign(N, 0);
     }
 
-    SEG_TREE(vector<int> &arr) {
+    SegTree(vector<int> &arr) {
         N = arr.size() << 2;
         seg.assign(N, 0);
         build(1, 0, arr.size()-1, arr);
@@ -149,8 +149,68 @@ private:
     }
 };
 
+
+struct BigSegTree {
+    struct STNode {
+        int val = 0;
+        int l, r;
+        STNode *left = nullptr;
+        STNode *right = nullptr;
+
+        STNode() {};
+        STNode(int _l, int _r) : l(_l), r(_r) {};
+    };
+
+    STNode seg;
+
+    BigSegTree(int l, int r) {
+        seg = STNode(l, r);
+    }
+
+    void update(int i, int x) {
+        update(&seg, i, x);
+    }
+
+    int query(int i, int j) {
+        return query(&seg, i, j);
+    }
+
+private:
+    void update(STNode *root, const int i, const int x) {
+        if(root->l == root->r) {
+            root->val += x;
+            return;
+        }
+        int mid = (root->l + root->r) / 2;
+        if(i <= mid) {
+            if(root->left == nullptr) root->left = new STNode(root->l, mid);
+            update(root->left, i, x);
+        } else {
+            if(root->right == nullptr) root->right = new STNode(mid+1, root->r);
+            update(root->right, i, x);
+        }
+        
+        root->val = 0;
+        if(root->left != nullptr) root->val += root->left->val;
+        if(root->right != nullptr) root->val += root->right->val;
+    }
+
+    int query(STNode *root, const int i, const int j) {
+        if(root == nullptr or i > root->r or j < root->l) return 0;
+        if(i <= root->l and root->r <= j) return root->val;
+        return query(root->left, i, j) + query(root->right, i, j);
+    }
+};
+
+
 int main(int argc, char const *argv[])
 {
-    /* code */
+    // BigSegTree st(0, 1000000000);
+
+    // st.update(10, 1);
+    // st.update(1000000000, 1);
+
+    // cout << st.query(0, 1000000000) << " " << st.query(10000, 1000000000-1) << " " << st.query(100000, 1000000000) << " " << st.query(10, 10);
+
     return 0;
 }
