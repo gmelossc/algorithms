@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class KMP {
+struct KMP {
 	string pattern;
 	vector<int> f;
 
