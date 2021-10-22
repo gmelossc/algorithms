@@ -32,3 +32,37 @@ void join(int x, int y){ // optimization of join function above based on weight 
   sz[y] += sz[x];
   if(weight[x] == weight[y]) weight[y]++;
 }
+
+
+
+
+
+
+struct UnionFind {
+  vector<int> uf, w;
+
+  UnionFind(int N) {
+    uf.assign(N, 0);
+    w.assign(N, 1);
+
+    for(int i=0; i<N; ++i) uf[i] = i;
+  }
+
+  int find(int i) {
+    return uf[i] == i ? i : uf[i] = find(uf[i]);
+  }
+
+  void join(int i, int j) {
+    i = find(i);
+    j = find(j);
+    if(i == j) return;
+
+    if(w[i] > w[j]) {
+      w[i] += w[j];
+      uf[j] = i;
+    } else {
+      w[j] += w[i];
+      uf[i] = j;
+    }
+  }
+};
