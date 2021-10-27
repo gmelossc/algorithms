@@ -2,9 +2,11 @@
 using namespace std;
 
 struct SparseTable {
+private:
     vector<vector<int>> sparse;
     vector<int> LOG;
 
+public:
     SparseTable(vector<int> &v) {
         int N = v.size();
         LOG.assign(N+1, 0);
