@@ -5,7 +5,7 @@ using namespace std;
 typedef vector<int> vi;
 const int MAX = 1e6 + 1;
 
-int color[MAX], n;
+int color[MAX], n, m;
 vi adj[MAX];
 
 void coloring(int i){
@@ -37,4 +37,17 @@ bool bipartiteCheck(){
 			if(color[v] == color[u]) return false;
 
 	return true;
+}
+
+int32_t main(){
+	cin >> n >> m;
+
+	for(int i =0 ; i < m; ++i){
+		int u, v;
+		cin >> u >> v;
+		adj[u].push_back(v);
+		adj[v].push_back(u);
+	}
+	cout << (bipartiteCheck() ? "B\n" : "NB\n");
+	return 0;
 }
