@@ -202,6 +202,26 @@ private:
     }
 };
 
+struct EfficientSegTree {
+    int n;
+    vector<int> a;
+    EfficientSegTree(int _n) {
+        n = _n;
+        a.assign(n << 1, 0);
+    }
+    void add(int p, int x) {
+        for (a[p += n] += x; p > 1; p >>= 1) a[p>>1] = a[p] + a[p^1];
+    }
+    int query(int l, int r) {  // sum on interval [l, r)
+        int res = 0;
+        for (l += n, r += n; l < r; l >>= 1, r >>= 1) {
+            if (l&1) res += a[l++];
+            if (r&1) res += a[--r];
+        }
+        return res;
+    }
+};
+
 
 int main(int argc, char const *argv[])
 {
